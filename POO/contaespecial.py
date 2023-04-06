@@ -1,11 +1,11 @@
 
-import datetime
 from contas import Conta
 
 
 class ContaEspecial(Conta):
     # atributo limite foi implementado apenas na subclasse ContaEspecial
     def __init__(self, clientes, numero, saldo, limite):
+        # em herança simples pode-se usar a palavra super() para fazer referencia à classe Pai. Porém não é válido para heranças múltiplas
         Conta.__init__(self, clientes, numero, saldo)
         self.limite = limite
 
@@ -16,5 +16,5 @@ class ContaEspecial(Conta):
         else:
             self.saldo -= valor
             self.extrato.transacoes.append(
-                ['SAQUE', valor, 'Data', datetime.datetime.today()])
+                ['SAQUE', valor])
             return print('Saque realizado com sucesso')

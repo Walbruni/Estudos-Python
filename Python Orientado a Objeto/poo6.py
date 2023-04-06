@@ -28,7 +28,7 @@ print(f'A soma de 10 e 20 é: {d.somar()}')
 print(issubclass(Derivada, ClasseSomaMultiplica))
 
 
-# Sobrecarga (Passo importante antes do polimorfismo)
+# Atenção: o Python nao permite sobrecarga de metodos nativamente
 
 def somar(x, y, z=0):  # caso nao chame o terceiro parâmetro, o valor dele será 0
     return x + y + z

@@ -4,7 +4,9 @@
 # Existem algumas situações em que os sistemas precisam controlar valores associados à classe, e não aos objetos (instâncias) das classes.
 # É o caso, por exemplo, ao se desenvolver um aplicativo de desenho, como o Paint, que precisa contar o número de círculos criados na tela.
 
-import math  # utilizado no final do arquivo, na parte de estudo de METODOS ESTATICOS !!
+# utilizado no final do arquivo, na parte de estudo de METODOS ESTATICOS !!
+import datetime
+import math
 
 
 class Circulo():
@@ -168,6 +170,43 @@ class Extrato:
             print(p[0], p[1])
 
 
+class ContaEspecial(Conta):
+    # atributo limite foi implementado apenas na subclasse ContaEspecial
+    def __init__(self, clientes, numero, saldo, limite):
+        # em herança simples pode-se usar a palavra super() para fazer referencia à classe Pai. Porém não é válido para heranças múltiplas
+        Conta.__init__(self, clientes, numero, saldo)
+        self.limite = limite
+
+    def sacar(self, valor):
+        # método para verificar se o valor sacado é menor que a soma do saldo atual mais o limite da conta especial
+        if (self.saldo + self.limite) < valor:
+            return print(f'Valor do saque maior que o valor disponivel {self.saldo}')
+        else:
+            self.saldo -= valor
+            self.extrato.transacoes.append(
+                ['SAQUE', valor])
+            return print('Saque realizado com sucesso')
+
+
+class Poupanca:  # herança múltipla
+    def __init__(self, taxaRemuneracao):
+        self.taxaRemuneracao = taxaRemuneracao
+        self.data_abertura = datetime.datetime.today()
+
+    def remuneraConta(self):
+        self.saldo += self.saldo * self.taxaRemuneracao
+
+
+class ContaRemuneradaPoupanca(Conta, Poupanca):
+    def __init__(self, clientes, numero, saldo, taxaRemuneracao):
+        Conta.__init__(self, clientes, numero, saldo)
+        Poupanca.__init__(self, taxaRemuneracao)
+
+    def remuneraConta(self):
+        self.saldo += self.saldo * (self.taxaRemuneracao/30)
+        self.saldo -= self.taxaRemuneracao
+
+
 c1 = Cliente('121212121-12', 'Lucas', 'Rua X')
 c2 = Cliente('434343434-34', 'Joao', 'Rua YZ')
 
@@ -178,3 +217,7 @@ conta = Conta([c1, c2], 123212, 2500)
 conta.depositar(1000)
 conta.sacar(500)
 conta.extrato.imprimir()
+
+cx = ContaRemuneradaPoupanca([c1, c2], 9893123, 1500.00, 0.03)
+cx.remuneraConta()
+print(cx.saldo)
