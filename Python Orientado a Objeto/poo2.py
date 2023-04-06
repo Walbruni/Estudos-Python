@@ -34,6 +34,13 @@
 # Seu conceito consiste na separação dos aspectos externos (operações) de um objeto acessíveis a outros objetos, além de seus detalhes internos de implementação, que ficam ocultos dos demais objetos.
 # Algumas vezes, o encapsulamento é conhecido como o princípio do ocultamento de informação, pois permite que uma classe encapsule atributos e comportamentos, ocultando os detalhes da implementação.
 # Métodos Set e Get
+# o encapsulamento é fundamental para a manutenção da integridade dos objetos e a proibição de qualquer alteração indevida nos valores dos atributos (estado) do objeto. Esse ponto foi fundamental para a popularização da orientação aos objetos: reunir dados e funções em uma única entidade e proibir a alteração indevida dos atributos.
+
+# Atributos públicos e privados
+# Para seguir o encapsulamento e proibir alterações indevidas dos atributos, deve-se definir atributos privados para a classe. Por default, em Python, os atributos são definidos como público, ou seja, podem ser acessados diretamente sem respeitar o encapsulamento - acesso feito apenas por meio de métodos do objeto.
+# Para tornar um atributo privado, é preciso iniciá-lo com dois  "underscores('__')" E qual seria o retorno do interpretador ao se acessar um atributo privado para classe Conta? Um erro seria gerado.
+# É importante ressaltar que, em Python, não há realmente atributos privados. O interpretador renomeia o atributo privado para _nomedaClasse__nomedoatributo.
+
 
 # HERANÇA:
 # Na orientação a objetos, a herança é um mecanismo por meio do qual classes compartilham atributos e comportamentos, formando uma hierarquia. Uma classe herdeira recebe as características de outra classe para reimplementá-las ou especializá-las de uma maneira diferente da classe pai.
