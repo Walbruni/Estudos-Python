@@ -1,4 +1,3 @@
-import datetime
 from extrato import Extrato
 
 
@@ -7,13 +6,12 @@ class Conta:
         self.clientes = clientes
         self.numero = numero
         self.saldo = saldo
-        self.dataAbertura = datetime.datetime.today()
         self.extrato = Extrato()
 
     def depositar(self, valor):
         self.saldo += valor
         self.extrato.transacoes.append(
-            ["DEPOSITO", valor, "Data", datetime.datetime.today()])
+            ["DEPOSITO", valor])
 
     def sacar(self, valor):
         if self.saldo < valor:
@@ -21,7 +19,7 @@ class Conta:
         else:
             self.saldo -= valor
             self.extrato.transacoes.append(
-                ["SAQUE", valor, "Data", datetime.datetime.today()])
+                ["SAQUE", valor])
             return True
 
     def transfereValor(self, contaDestino, valor):
@@ -31,8 +29,8 @@ class Conta:
             contaDestino.depositar(valor)
             self.saldo -= valor
             self.extrato.transacoes.append(
-                ["TRANSFERENCIA", valor, "Data", datetime.datetime.today()])
-            return print("Transferencia Realizada")
+                ["TRANSFERENCIA", valor])
+            return print("Operação Realizada")
 
     def gerarsaldo(self):
         print(f'Conta: {self.numero} Saldo: {self.saldo}')

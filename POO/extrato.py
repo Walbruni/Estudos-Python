@@ -10,4 +10,4 @@ class Extrato:
     def extrato(self, numeroconta):
         print(f'Extrato: {numeroconta}')
         for p in self.transacoes:
-            print(f'{p[0]:15s} {p[1]:10.2f} {p[2]:10s}')
+            print(p[0], p[1])
