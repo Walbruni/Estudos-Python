@@ -17,8 +17,8 @@
 class NoArvore:
     def __init__(self, chave=None, esquerda=None, direita=None):
         self.chave = chave
-        self. esquerda = esquerda
-        self. direita = direita
+        self.esquerda = esquerda
+        self.direita = direita
 
 
 if __name__ == '__main__':
@@ -32,7 +32,7 @@ if __name__ == '__main__':
     raiz.esquerda.esquerda = NoArvore(25) # filhos do nó pai raiz.esquerda (35)
     raiz.esquerda.direita = NoArvore(45)  # filhos do nó pai raiz.esquerda (35)
 
-# os nós das extremidadas que não possuem filhos são chamados de folhas (leaf)
+# os nós das extremidades que não possuem filhos são chamados de folhas (leaf)
 
 
 # Árvores Binárias de Busca
